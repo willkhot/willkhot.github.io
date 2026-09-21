@@ -79,17 +79,6 @@
   }
   tick();
 
-  // ---------- Terminal language tabs ----------
-  $$('.term-tabs button').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var l = btn.dataset.lang;
-      $$('.term-tabs button').forEach(function (b) {
-        var on = b === btn; b.classList.toggle('active', on); b.setAttribute('aria-selected', on);
-      });
-      $$('.term pre').forEach(function (pre) { pre.hidden = pre.dataset.lang !== l; });
-    });
-  });
-
   // ---------- Lightbox ----------
   var lb = $('#lightbox'), lbImg = $('#lbImg');
   function closeLb() { lb.hidden = true; lbImg.src = ''; document.body.style.overflow = ''; }

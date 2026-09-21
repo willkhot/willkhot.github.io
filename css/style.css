@@ -258,3 +258,5 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(3rem,9.5vw,7rem);lin
 .award-row{display:flex;gap:14px;align-items:center;padding:2px 6px 6px}
 .award-row span{font-size:1.6rem;filter:grayscale(1)}
 .award-row small{display:block;color:var(--muted)}
+
+.term-file{margin-left:10px;font-family:var(--mono);font-size:.78rem;color:rgba(255,253,244,.6)}

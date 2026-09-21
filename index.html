@@ -62,23 +62,8 @@
 
         <div class="hero-card reveal" style="--d:.15s">
           <div class="term">
-            <div class="term-bar"><i></i><i></i><i></i>
-              <div class="term-tabs" role="tablist" aria-label="Choose language">
-                <button role="tab" class="active" data-lang="ps" aria-selected="true">zero-trust.ps1</button>
-                <button role="tab" data-lang="py" aria-selected="false">zero_trust.py</button>
-              </div>
-            </div>
-<pre data-lang="ps"><code><span class="c"># how I approach every system</span>
-<span class="k">$principles</span> = @(
-  <span class="s">"Verify explicitly"</span>,
-  <span class="s">"Use least privilege access"</span>,
-  <span class="s">"Assume breach"</span>
-)
-
-<span class="k">foreach</span> (<span class="k">$p</span> <span class="k">in</span> <span class="k">$principles</span>) {
-  <span class="k">Apply-Principle</span> <span class="k">$p</span>
-}</code></pre>
-<pre data-lang="py" hidden><code><span class="c"># how I approach every system</span>
+            <div class="term-bar"><i></i><i></i><i></i><span class="term-file">zero_trust.py</span></div>
+<pre data-lang="py"><code><span class="c"># how I approach every system</span>
 principles = [
     <span class="s">"Verify explicitly"</span>,
     <span class="s">"Use least privilege access"</span>,
