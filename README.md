@@ -9,8 +9,4 @@ Static site (HTML/CSS/JS), no build step. Hosted with GitHub Pages.
 - Behavior: `js/main.js`
 - Images/resume: `assets/`
 
-## Run locally
-```
-python -m http.server 8000
-```
-Then open http://localhost:8000
+Then open willkhot.github.io
