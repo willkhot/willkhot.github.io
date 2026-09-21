@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>William Khotsyphom | Cybersecurity, Identity & Cloud</title>
+  <meta name="description" content="Portfolio of William Khotsyphom: cybersecurity student and IT intern focused on Microsoft Entra ID, Azure, Infrastructure as Code, and Zero Trust." />
+  <meta name="theme-color" content="#101010" />
+  <meta property="og:title" content="William Khotsyphom | Cybersecurity, Identity & Cloud" />
+  <meta property="og:description" content="Identity and access management, Azure IaC, and Zero Trust projects." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23101010'/%3E%3Ctext x='50' y='66' font-size='52' font-family='Arial' font-weight='700' text-anchor='middle' fill='%23fffdf4'%3EWK%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Sora:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="Home"><span class="brand-mark">WK</span><span class="brand-name">William Khotsyphom</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <a class="menu-resume" href="assets/William_Khotsyphom_Resume.pdf" download="William_Khotsyphom_Resume.pdf">⬇ Download Resume</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-sm btn-primary hide-sm" href="assets/William_Khotsyphom_Resume.pdf" download="William_Khotsyphom_Resume.pdf">⬇ Resume</a>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="pill"><span class="dot"></span> Open to internships</span>
+          <h1>Hi, I'm <span class="grad">William Khotsyphom</span></h1>
+          <p class="typed-line">I'm into <span id="typed" class="typed"></span><span class="caret"></span></p>
+          <p class="lead">Cybersecurity student at the University of Missouri&ndash;St. Louis, determined to solve tough problems and add value to any team.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+          </div>
+          <div class="socials">
+            <a href="https://www.linkedin.com/in/will-khotsyphom" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2 3.77-2 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.9c0-1.17-.02-2.68-1.63-2.68-1.63 0-1.88 1.27-1.88 2.6V21h-4z"/></svg></a>
+            <a href="mailto:wkhotsyphom@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          </div>
+        </div>
+
+        <div class="hero-card reveal" style="--d:.15s">
+          <div class="term">
+            <div class="term-bar"><i></i><i></i><i></i>
+              <div class="term-tabs" role="tablist" aria-label="Choose language">
+                <button role="tab" class="active" data-lang="ps" aria-selected="true">zero-trust.ps1</button>
+                <button role="tab" data-lang="py" aria-selected="false">zero_trust.py</button>
+              </div>
+            </div>
+<pre data-lang="ps"><code><span class="c"># how I approach every system</span>
+<span class="k">$principles</span> = @(
+  <span class="s">"Verify explicitly"</span>,
+  <span class="s">"Use least privilege access"</span>,
+  <span class="s">"Assume breach"</span>
+)
+
+<span class="k">foreach</span> (<span class="k">$p</span> <span class="k">in</span> <span class="k">$principles</span>) {
+  <span class="k">Apply-Principle</span> <span class="k">$p</span>
+}</code></pre>
+<pre data-lang="py" hidden><code><span class="c"># how I approach every system</span>
+principles = [
+    <span class="s">"Verify explicitly"</span>,
+    <span class="s">"Use least privilege access"</span>,
+    <span class="s">"Assume breach"</span>,
+]
+
+<span class="k">for</span> p <span class="k">in</span> principles:
+    apply_principle(p)
+</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="container stats reveal">
+        <div class="stat"><div class="num" data-count="1500" data-suffix="+">0</div><div class="lbl">Help desk tickets resolved in six months</div></div>
+        <div class="stat"><div class="num" data-count="99" data-suffix="%">0</div><div class="lbl">Approx. customer satisfaction and on-time completion</div></div>
+        <div class="stat"><div class="num" data-count="4.0" data-decimals="1">0</div><div class="lbl">GPA, Dean's List every semester</div></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">01 / About</span><h2>About me</h2></div>
+        <div class="about-grid">
+          <div class="about-photo reveal">
+            <img src="assets/profile.png" alt="Portrait of William Khotsyphom" />
+          </div>
+          <div class="about-text reveal" style="--d:.1s">
+            <p>I chose this Cybersecurity because I love technology and how it's woven into so many processes. Every organization depends on it, which makes securing it work that matters.</p>
+            <p>I love tinkering with computers, and when something catches my interest, I take a deep dive. The field never stands still, and some people see that as a downside of IT. I see it as a chance to keep learning something new.</p>
+            <p>Lately I've been really into identity and access management, especially while studying for the SC-300. Working in industry showed me how important authentication and access are, and how much they matter under a Zero Trust approach.</p>
+            <div class="facts">
+              <div class="fact"><span>📍</span><div><b>Location</b>St. Louis, Missouri</div></div>
+              <div class="fact"><span>🛡️</span><div><b>Focus</b>Entra ID, Identity &amp; Access, Azure, IaC</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section alt">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">02 / Experience</span><h2>Work experience</h2></div>
+        <div class="timeline">
+          <article class="t-item reveal">
+            <div class="t-dot"></div>
+            <div class="t-card">
+              <div class="t-head">
+                <div><h3>Information Technology Intern</h3><div class="org">Fabick CAT <span>&middot; Fenton, Missouri</span></div></div>
+                <span class="date">Jan 2026 &ndash; Jul 2026</span>
+              </div>
+              <ul>
+                <li>Supported the company's <b>Azure Landing Zone</b> initiative by helping develop reusable <b>Azure Bicep and PowerShell</b> solutions that standardize and automate VM deployments, cutting manual effort and configuration drift while improving consistency, scalability, and security.</li>
+                <li>Supported <b>IAM across Active Directory and Microsoft Entra ID</b>: Microsoft 365 licensing, security groups, role assignments, enterprise application access, and M365/Exchange administration, enforcing appropriate access through <b>Zero Trust</b> principles.</li>
+                <li>Provisioned Windows Server infrastructure and deployed <b>Microsoft Exchange Server SE</b>, including SMTP configuration and mail-flow testing, preparing for a future Microsoft 365 mailbox migration.</li>
+                <li>Resolved hardware, software, network, account, and access issues in <b>Revelation ITSM</b>, completing <b>1,500+ tickets in six months</b> with ~99% customer satisfaction and on-time completion.</li>
+                <li>Joined weekly <b>security health reviews</b> covering Entra ID activity, MFA adoption, VPN access, privileged accounts, suspicious sign-ins, and alerts, helping identify risks and strengthen security posture.</li>
+              </ul>
+              <div class="tags"><span>Azure</span><span>Bicep</span><span>PowerShell</span><span>Entra ID</span><span>Active Directory</span><span>Exchange</span><span>Microsoft 365</span><span>ITSM</span></div>
+            </div>
+          </article>
+
+          <article class="t-item reveal">
+            <div class="t-dot alt"></div>
+            <div class="t-card">
+              <div class="t-head">
+                <div><h3>Marketing Officer</h3><div class="org">Information Technology &amp; Cybersecurity Club <span>&middot; UMSL</span></div></div>
+                <span class="date">Fall 2024 &ndash; Present</span>
+              </div>
+              <ul>
+                <li>Designed promotional materials and coordinated with club officers, faculty, and industry professionals to increase engagement in technical events, guest-speaker sessions, and hands-on labs.</li>
+              </ul>
+              <div class="tags"><span>Leadership</span><span>Communication</span><span>Community</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">03 / Projects</span><h2>Featured projects</h2><p>Click any architecture diagram to enlarge it.</p></div>
+
+        <article class="project reveal">
+          <div class="p-media">
+            <button class="zoomable" data-full="assets/azure-vm-deploy-architecture.webp" aria-label="Enlarge Azure VM Deploy architecture diagram">
+              <img src="assets/azure-vm-deploy-architecture.webp" alt="Architecture diagram of the Azure VM deployment framework: PowerShell wrapper, Bicep template, private-only VM, NSG, CyberArk PSM ingress, and SD-WAN spoke connectivity" loading="lazy" />
+              <span class="zoom-hint">🔍 Enlarge</span>
+            </button>
+          </div>
+          <div class="p-body">
+            <div class="p-meta"><span class="badge">Fabick CAT</span><span class="date">Jun 2026 &ndash; Jul 2026</span></div>
+            <h3>Azure VM Deployment Automation &amp; Standardization Framework</h3>
+            <p>Helped build a reusable Azure Infrastructure-as-Code framework with <b>Bicep and PowerShell</b> to replace manual provisioning, which was slow, error-prone, drift-prone, and lacked a standard process. Integrated into <b>Azure DevOps</b>, it is the foundation for future service principal-based CI/CD, with more security, governance, and compliance controls in development.</p>
+            <ul class="checks">
+              <li>Dynamic VM SKU validation with live quota checks and best-available size selection</li>
+              <li>Microsoft Entra ID ownership verification of Business and Technical Owner tags</li>
+              <li>Governance tagging (8 tags per resource) and environment-specific lifecycle management</li>
+              <li>Validate-then-create safeguards with automatic cleanup on deployment failure</li>
+              <li>Private-only networking: no public IP, NSG plus host firewall as defense in depth</li>
+              <li>CyberArk PSM-secured administrative access as the single brokered RDP path</li>
+              <li>Azure Virtual WAN hub-and-spoke connectivity for on-prem and backbone reachability</li>
+            </ul>
+            <div class="tags"><span>Azure Bicep</span><span>PowerShell</span><span>Azure DevOps</span><span>Entra ID</span><span>NSG</span><span>Azure Virtual WAN</span><span>CyberArk PSM</span><span>IaC</span></div>
+          </div>
+        </article>
+
+        <article class="project flip reveal">
+          <div class="p-media">
+            <button class="zoomable" data-full="assets/entra-iam-lab-architecture.webp" aria-label="Enlarge Entra ID IAM lab architecture diagram">
+              <img src="assets/entra-iam-lab-architecture.webp" alt="Architecture of the Microsoft Entra ID IAM lab: identity lifecycle, Conditional Access and MFA, PIM, and monitoring and validation" loading="lazy" />
+              <span class="zoom-hint">🔍 Enlarge</span>
+            </button>
+          </div>
+          <div class="p-body">
+            <div class="p-meta"><span class="badge alt">Independent</span><span class="date">Apr 2026 &ndash; Present</span></div>
+            <h3>Microsoft Entra ID Identity &amp; Access Management Lab</h3>
+            <p>An ongoing personal Entra ID tenant that I built and administer to develop hands-on IAM skills while preparing for <b>SC-300</b>. It runs on fictional lab identities only, and I keep expanding it as I work through the material.</p>
+            <ul class="checks">
+              <li>Full identity lifecycle: provision, modify, and deprovision users, groups, roles, and access assignments</li>
+              <li>Conditional Access policies, MFA, and authentication methods, tested end to end</li>
+              <li>Role-based access control and least-privilege permission testing</li>
+              <li>Privileged Identity Management: eligible assignments, activation with MFA and justification, time-limited roles</li>
+              <li>Sign-in and audit log analysis to validate controls and troubleshoot access issues</li>
+            </ul>
+            <div class="tags"><span>Microsoft Entra ID</span><span>Conditional Access</span><span>MFA</span><span>RBAC</span><span>PIM</span><span>Sign-in Logs</span><span>Audit Logs</span><span>Zero Trust</span></div>
+          </div>
+        </article>
+
+        <!-- TODO: add more projects by copying an <article class="project"> block above -->
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="section alt">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">04 / Certifications</span><h2>Certifications</h2></div>
+        <div class="cert-grid">
+          <article class="cert reveal">
+            <div class="cert-top"><span class="status earned">✔ Earned</span><span class="date">April 4, 2026</span></div>
+            <div class="cert-body">
+              <button class="zoomable cert-img" data-full="assets/az-900-certificate.png" aria-label="Enlarge AZ-900 certificate">
+                <img src="assets/az-900-certificate.png" alt="Microsoft Certified: Azure Fundamentals certificate" loading="lazy" />
+              </button>
+              <div>
+                <h3>Microsoft Certified: Azure Fundamentals</h3>
+                <p class="muted">Exam AZ-900 &middot; Microsoft</p>
+                <p>Foundational knowledge of cloud concepts, core Azure architecture and services, and Azure management, governance, security, and compliance.</p>
+                <a class="btn btn-sm btn-ghost" href="https://learn.microsoft.com/en-us/users/willkhotstphom-0931/credentials/81ba6b13b409945c?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" rel="noopener">Verify credential ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="cert progress reveal" style="--d:.1s">
+            <div class="cert-top"><span class="status wip">⏳ In progress</span><span class="date">Studying now</span></div>
+            <div class="cert-body single">
+              <div>
+                <h3>Microsoft Identity and Access Administrator Associate</h3>
+                <p class="muted">Exam SC-300 &middot; Microsoft</p>
+                <p>Designing, implementing, and operating identity and access management with Microsoft Entra ID.</p>
+                <div class="bar"><i></i></div>
+                <ul class="domains">
+                  <li>Implement and manage identities in Entra ID</li>
+                  <li>Authentication and access management (Conditional Access, MFA)</li>
+                  <li>Workload identities and enterprise apps</li>
+                  <li>Identity governance (PIM, access reviews, entitlement management)</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- TODO: add more certifications here as you earn them -->
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">05 / Skills</span><h2>Technical skills</h2></div>
+        <div class="skill-grid">
+          <div class="skill reveal"><h3>Cloud &amp; Infrastructure</h3><div class="chips"><span>Microsoft Azure</span><span>Azure Bicep</span><span>PowerShell</span><span>Azure Cloud Shell</span><span>Infrastructure as Code</span></div></div>
+          <div class="skill reveal" style="--d:.05s"><h3>Identity &amp; Access Management</h3><div class="chips"><span>Microsoft Entra ID</span><span>Active Directory</span><span>RBAC</span><span>PIM</span><span>Conditional Access</span><span>MFA</span><span>Identity Protection</span><span>Access Reviews</span><span>Entitlement Management</span><span>Hybrid Identity</span></div></div>
+          <div class="skill reveal" style="--d:.1s"><h3>Security &amp; Monitoring</h3><div class="chips"><span>Microsoft Defender</span><span>Security Monitoring</span><span>Alert Analysis</span><span>Security Health Reviews</span><span>Sign-in Monitoring</span><span>ISO/IEC 27000</span><span>NIST CSF</span><span>CVE</span><span>CVSS</span></div></div>
+          <div class="skill reveal" style="--d:.15s"><h3>Programming &amp; Scripting</h3><div class="chips"><span>Python</span><span>Java</span><span>Bash</span><span>PowerShell</span></div></div>
+          <div class="skill reveal" style="--d:.2s"><h3>Networking &amp; IT Ops</h3><div class="chips"><span>Network Troubleshooting</span><span>IT Operations</span><span>ITSM</span></div></div>
+          <div class="skill reveal" style="--d:.25s"><h3>Tools &amp; Technologies</h3><div class="chips"><span>Azure Portal</span><span>Entra Admin Center</span><span>ADUC</span><span>M365 Admin Center</span><span>Exchange Admin Center</span><span>Proofpoint</span><span>Revelation ITSM</span><span>VirtualBox</span><span>Wireshark</span><span>VS Code</span><span>Git/GitHub</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section alt">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">06 / Education</span><h2>Education &amp; honors</h2></div>
+        <div class="edu reveal">
+          <div class="edu-main">
+            <h3>University of Missouri&ndash;St. Louis</h3>
+            <p class="deg">Bachelor of Science in Cybersecurity, Information Technology Emphasis</p>
+            <div class="edu-meta"><span>Expected December 2027</span><span>St. Louis, Missouri</span><span class="gpa">GPA 4.0 / 4.0</span></div>
+            <h4>Relevant coursework</h4>
+            <div class="chips courses"><span><b>INFSYS 3866</b> Cloud Security for Business</span><span><b>INFSYS 3848</b> Introduction to Information Security</span><span><b>INFSYS 3842</b> Data Networks and Security</span><span><b>INFSYS 3820</b> Introduction to Systems Administration</span><span><b>INFSYS 3845</b> Database Management Systems</span><span><b>INFSYS 3806</b> Managerial Applications of Object-Oriented Programming</span><span><b>INFSYS 2800</b> Information Systems Concepts and Applications</span><span><b>INFSYS 1800</b> Computers and Information Systems</span><span><b>CMP SCI 2700</b> Computer Organization and Architecture</span><span><b>CMP SCI 2250</b> Programming and Data Structures</span><span><b>CMP SCI 1250</b> Introduction to Computing</span></div>
+          </div>
+          <div class="edu-side">
+            <div class="award award-card">
+              <button class="zoomable award-photo" data-full="assets/outstanding-student-award.webp" aria-label="Enlarge award photo">
+                <img src="assets/outstanding-student-award.webp" alt="William Khotsyphom accepting the Cybersecurity/IT Outstanding Student Award certificate on stage" loading="lazy" />
+                <span class="zoom-hint">🔍 Enlarge</span>
+              </button>
+              <div class="award-row"><span>🏆</span><div><b>Cybersecurity/IT Outstanding Student Award</b><small>Spring 2025</small></div></div>
+            </div>
+            <div class="award"><span>🎖️</span><div><b>Dean's List</b><small>All semesters</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="cta reveal">
+          <span class="eyebrow">07 / Contact</span>
+          <h2>Let's work together</h2>
+          <p>I'm looking for opportunities in identity and access management, cloud security, DevOps, and IT. The fastest way to reach me is email or LinkedIn.</p>
+          <div class="hero-cta center">
+            <a class="btn btn-primary" href="mailto:wkhotsyphom@gmail.com">✉️ wkhotsyphom@gmail.com</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/will-khotsyphom" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn btn-ghost" href="assets/William_Khotsyphom_Resume.pdf" download="William_Khotsyphom_Resume.pdf">⬇ Download Resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container foot-inner">
+      <span>&copy; <span id="year"></span> William Khotsyphom</span>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image" hidden>
+    <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+    <img id="lbImg" alt="" />
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
