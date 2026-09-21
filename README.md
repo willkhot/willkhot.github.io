@@ -9,4 +9,4 @@ Static site (HTML/CSS/JS), no build step. Hosted with GitHub Pages.
 - Behavior: `js/main.js`
 - Images/resume: `assets/`
 
-Then open willkhot.github.io
+Then open [willkhot.github.io](https://willkhot.github.io)
