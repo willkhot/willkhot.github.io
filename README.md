@@ -7,6 +7,6 @@ Static site (HTML/CSS/JS), no build step. Hosted with GitHub Pages.
 - Content: `index.html` (search for `TODO`)
 - Styling: `css/style.css`
 - Behavior: `js/main.js`
-- Images/resume: `assets/`
+- Images: `assets/`
 
 Then open [willkhot.github.io](https://willkhot.github.io)

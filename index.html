@@ -30,10 +30,8 @@
         <a href="#skills">Skills</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-        <a class="menu-resume" href="assets/William_Khotsyphom_Resume.pdf" download="William_Khotsyphom_Resume.pdf">⬇ Download Resume</a>
       </nav>
       <div class="nav-actions">
-        <a class="btn btn-sm btn-primary hide-sm" href="assets/William_Khotsyphom_Resume.pdf" download="William_Khotsyphom_Resume.pdf">⬇ Resume</a>
         <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         </button>
@@ -77,12 +75,6 @@ principles = [
           </div>
         </div>
       </div>
-
-      <div class="container stats reveal">
-        <div class="stat"><div class="num" data-count="1500" data-suffix="+">0</div><div class="lbl">Help desk tickets resolved in six months</div></div>
-        <div class="stat"><div class="num" data-count="99" data-suffix="%">0</div><div class="lbl">Approx. customer satisfaction and on-time completion</div></div>
-        <div class="stat"><div class="num" data-count="4.0" data-decimals="1">0</div><div class="lbl">GPA, Dean's List every semester</div></div>
-      </div>
     </section>
 
     <!-- ABOUT -->
@@ -94,15 +86,20 @@ principles = [
             <img src="assets/profile.png" alt="Portrait of William Khotsyphom" />
           </div>
           <div class="about-text reveal" style="--d:.1s">
-            <p>Hello, my name is Will! I'm passionate about technology, eager to tackle new challenges, and excited to contribute to a team where I can keep learning and add value.</p>
-            <p>I chose cybersecurity because technology is woven into so many everyday processes. Every organization depends on it, which makes protecting it work that matters.</p>
-            <p>I've always enjoyed tinkering with computers. When something catches my interest, I dive deeper to understand how it works. The field never stands still, and I see that as an opportunity to keep learning and building my skills.</p>
-            <p>Lately, I've been especially interested in identity and access management while studying for the SC-300. My experience in industry has shown me how important authentication and access controls are, particularly within a Zero Trust approach.</p>
-            <p>I look forward to bringing my curiosity, problem-solving mindset, and willingness to learn to a team working to make systems more secure.</p>
-            <div class="facts">
-              <div class="fact"><span>📍</span><div><b>Location</b>St. Louis, Missouri</div></div>
-              <div class="fact"><span>🛡️</span><div><b>Focus</b>Entra ID, Identity &amp; Access, Azure, IaC</div></div>
-            </div>
+            <p>Hey, I'm Will! I've been messing around with computers for as long as I can remember.</p>
+            <p>Most of what I know started with my own PC. I'll change a setting just to see what it does, or take something apart to figure out how it works. Sometimes I break it, and fixing it is usually where I learn the most. That's a big part of why I ended up in security.</p>
+            <p>These days I'm into identity and access management. At my internship I saw how much of security comes down to who can sign in and what they can get to, so I built my own lab to practice it.</p>
+            <p>I love technology and how it touches pretty much everything. That's why I'm glad I picked this field. It's always changing, so there's always something new to learn.</p>
+          </div>
+        </div>
+
+        <div class="offclock reveal">
+          <h3>When I log off</h3>
+          <div class="hobby-grid">
+            <div class="hobby"><h4>Pickleball</h4><p>Picked it up and got hooked. I'm always down for a game.</p></div>
+            <div class="hobby"><h4>Hiking</h4><p>Nice to get outside and off my phone for a few hours.</p></div>
+            <div class="hobby"><h4>Working out</h4><p>I try to get to the gym most days. It helps me clear my head.</p></div>
+            <div class="hobby"><h4>Friday food spots</h4><p>New restaurant every Friday. Got a St. Louis place I should try? Let me know.</p></div>
           </div>
         </div>
       </div>
@@ -196,6 +193,7 @@ principles = [
               <li>Sign-in and audit log analysis to validate controls and troubleshoot access issues</li>
             </ul>
             <div class="tags"><span>Microsoft Entra ID</span><span>Conditional Access</span><span>MFA</span><span>RBAC</span><span>PIM</span><span>Sign-in Logs</span><span>Audit Logs</span><span>Zero Trust</span></div>
+            <div class="p-links"><a class="btn btn-sm btn-ghost" href="https://github.com/willkhot/linux-cloud-iam-labs/tree/main/iam-labs" target="_blank" rel="noopener">View lab write-ups on GitHub ↗</a></div>
           </div>
         </article>
 
@@ -250,7 +248,7 @@ principles = [
       <div class="container">
         <div class="section-head reveal"><span class="eyebrow">05 / Skills</span><h2>Technical skills</h2></div>
         <div class="skill-grid">
-          <div class="skill reveal"><h3>Cloud &amp; Infrastructure</h3><div class="chips"><span>Microsoft Azure</span><span>Azure Bicep</span><span>PowerShell</span><span>Azure Cloud Shell</span><span>Infrastructure as Code</span></div></div>
+          <div class="skill reveal"><h3>Cloud &amp; Infrastructure</h3><div class="chips"><span>Microsoft Azure</span><span>Azure Bicep</span><span>Azure Cloud Shell</span><span>Infrastructure as Code</span></div></div>
           <div class="skill reveal" style="--d:.05s"><h3>Identity &amp; Access Management</h3><div class="chips"><span>Microsoft Entra ID</span><span>Active Directory</span><span>RBAC</span><span>PIM</span><span>Conditional Access</span><span>MFA</span><span>Identity Protection</span><span>Access Reviews</span><span>Entitlement Management</span><span>Hybrid Identity</span></div></div>
           <div class="skill reveal" style="--d:.1s"><h3>Security &amp; Monitoring</h3><div class="chips"><span>Microsoft Defender</span><span>Security Monitoring</span><span>Alert Analysis</span><span>Security Health Reviews</span><span>Sign-in Monitoring</span><span>ISO/IEC 27000</span><span>NIST CSF</span><span>CVE</span><span>CVSS</span></div></div>
           <div class="skill reveal" style="--d:.15s"><h3>Programming &amp; Scripting</h3><div class="chips"><span>Python</span><span>Java</span><span>Bash</span><span>PowerShell</span></div></div>
@@ -294,9 +292,8 @@ principles = [
           <h2>Let's work together</h2>
           <p>I'm looking for opportunities in identity and access management, cloud security, DevOps, and IT. The fastest way to reach me is email or LinkedIn.</p>
           <div class="hero-cta center">
-            <a class="btn btn-primary" href="mailto:wkhotsyphom@gmail.com">✉️ wkhotsyphom@gmail.com</a>
+            <a class="btn btn-primary" href="mailto:wkhotsyphom@gmail.com">wkhotsyphom@gmail.com</a>
             <a class="btn btn-ghost" href="https://www.linkedin.com/in/will-khotsyphom" target="_blank" rel="noopener">LinkedIn ↗</a>
-            <a class="btn btn-ghost" href="assets/William_Khotsyphom_Resume.pdf" download="William_Khotsyphom_Resume.pdf">⬇ Download Resume</a>
           </div>
         </div>
       </div>

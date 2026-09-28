@@ -42,28 +42,6 @@
     reveals.forEach(function (el) { el.classList.add('in'); });
   }
 
-  // ---------- Counters ----------
-  function runCounter(el) {
-    var target = parseFloat(el.dataset.count), dec = parseInt(el.dataset.decimals || '0', 10);
-    var suffix = el.dataset.suffix || '', dur = 1400, start = null;
-    function step(ts) {
-      if (!start) start = ts;
-      var p = Math.min((ts - start) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = (dec ? (target * eased).toFixed(dec) : Math.round(target * eased).toLocaleString('en-US')) + suffix;
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  var counters = $$('[data-count]');
-  if ('IntersectionObserver' in window) {
-    var co = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) { runCounter(en.target); co.unobserve(en.target); } });
-    }, { threshold: 0.6 });
-    counters.forEach(function (c) { co.observe(c); });
-  } else {
-    counters.forEach(function (c) { c.textContent = Number(c.dataset.count).toLocaleString('en-US', { minimumFractionDigits: parseInt(c.dataset.decimals || '0', 10) }) + (c.dataset.suffix || ''); });
-  }
-
   // ---------- Typing effect ----------
   var phrases = ['Microsoft Entra ID', 'Zero Trust & least privilege', 'Azure Infrastructure as Code', 'Identity & access management', 'Cloud security'];
   var typed = $('#typed'), pi = 0, ci = 0, del = false;
