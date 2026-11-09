@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AskBamCoHR — Sample Sign-in Page</title>
+  <!-- MSAL.js (Microsoft Authentication Library for the browser), pinned version -->
+  <script src="https://cdn.jsdelivr.net/npm/@azure/msal-browser@4.30.0/lib/msal-browser.min.js"></script>
+  <style>
+    :root {
+      --bg: #f4f6f9; --card: #ffffff; --ink: #1b1f24; --muted: #5b6573;
+      --brand: #0f6cbd; --brand-dark: #0b538f; --ok: #107c10; --warn: #b4630c; --line: #dde2e8;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--ink); }
+    header { background: var(--brand); color: #fff; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+    header h1 { font-size: 1.15rem; margin: 0; font-weight: 600; }
+    header small { opacity: .8; font-weight: 400; margin-left: 8px; }
+    main { max-width: 960px; margin: 28px auto; padding: 0 16px; display: grid; gap: 18px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 20px 22px; }
+    .card h2 { margin: 0 0 10px; font-size: 1.05rem; }
+    .muted { color: var(--muted); font-size: .92rem; }
+    button { font: inherit; border: 0; border-radius: 4px; padding: 8px 16px; cursor: pointer; background: var(--brand); color: #fff; }
+    button:hover { background: var(--brand-dark); }
+    button.secondary { background: #fff; color: var(--brand); border: 1px solid var(--brand); }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { width: 34%; color: var(--muted); font-weight: 600; }
+    td code { word-break: break-all; }
+    .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .8rem; font-weight: 600; }
+    .pill.ok { background: #dff6dd; color: var(--ok); }
+    .pill.warn { background: #fff4ce; color: var(--warn); }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    @media (max-width: 720px) { .grid2 { grid-template-columns: 1fr; } }
+    .faq button { width: 100%; text-align: left; margin-bottom: 6px; }
+    #answer { margin-top: 10px; padding: 12px; background: var(--bg); border-radius: 6px; min-height: 44px; }
+    .hidden { display: none; }
+    #error { border-color: #f1bbbc; background: #fdf3f4; color: #a4262c; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AskBamCoHR <small>Bam Co. lab app</small></h1>
+    <div>
+      <button id="signInBtn" class="secondary">Sign in</button>
+      <button id="signOutBtn" class="secondary hidden">Sign out</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Signed-out view -->
+    <section id="welcome" class="card">
+      <h2>Welcome to AskBamCoHR</h2>
+      <p class="muted">
+        This is a sample single-page app (SPA) registered in Microsoft Entra ID. Sign in with your
+        Bam Co. account to see the ID token claims Entra issues and your profile from Microsoft Graph.
+      </p>
+      <button id="signInBtn2">Sign in with Microsoft</button>
+    </section>
+
+    <section id="error" class="card hidden"></section>
+
+    <!-- Signed-in view -->
+    <div id="app" class="hidden" style="display:grid; gap:18px;">
+      <section class="card">
+        <h2 id="greeting">Hello</h2>
+        <p class="muted">Signed in to tenant <code id="tenantId"></code></p>
+        <p>HR Admin role: <span id="rolePill" class="pill warn">Not assigned</span></p>
+      </section>
+
+      <div class="grid2">
+        <section class="card">
+          <h2>Your profile (Microsoft Graph /me)</h2>
+          <table id="graphTable"><tr><td class="muted">Loading…</td></tr></table>
+        </section>
+
+        <section class="card faq">
+          <h2>Ask HR</h2>
+          <p class="muted">Sample questions with placeholder answers.</p>
+          <button class="secondary" data-q="pto">How do I request time off?</button>
+          <button class="secondary" data-q="benefits">When is benefits open enrollment?</button>
+          <button class="secondary" data-q="payroll">Where do I see my pay stubs?</button>
+          <div id="answer" class="muted">Pick a question above.</div>
+        </section>
+      </div>
+
+      <section id="adminPanel" class="card hidden">
+        <h2>HR Admin panel</h2>
+        <p class="muted">
+          You can see this because your token contains the <code>HR.Admin</code> app role.
+          Users without that role never see this section.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>ID token claims</h2>
+        <p class="muted">What Entra ID told this app about you.</p>
+        <table id="claimsTable"></table>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // ===== 1. Fill these in from the app registration's Overview page =====
+    const CLIENT_ID = "PASTE-APPLICATION-CLIENT-ID-HERE";
+    const TENANT_ID = "PASTE-DIRECTORY-TENANT-ID-HERE";
+
+    // The redirect URI must EXACTLY match one registered under
+    // Authentication > Single-page application. This uses the current page URL.
+    const REDIRECT_URI = window.location.origin + window.location.pathname;
+
+    const msalConfig = {
+      auth: {
+        clientId: CLIENT_ID,
+        authority: `https://login.microsoftonline.com/${TENANT_ID}`, // single tenant
+        redirectUri: REDIRECT_URI,
+        postLogoutRedirectUri: REDIRECT_URI
+      },
+      cache: { cacheLocation: "sessionStorage" }
+    };
+
+    // User.Read is granted by default on new app registrations
+    const loginRequest = { scopes: ["openid", "profile", "User.Read"] };
+
+    const pca = new msal.PublicClientApplication(msalConfig);
+    const $ = (id) => document.getElementById(id);
+
+    // ===== 2. Sign in / sign out =====
+    async function signIn() {
+      await pca.loginRedirect(loginRequest);
+    }
+
+    async function signOut() {
+      const account = pca.getActiveAccount();
+      await pca.logoutRedirect({ account });
+    }
+
+    // ===== 3. Get an access token for Graph and call /me =====
+    async function getGraphProfile(account) {
+      let tokenResponse;
+      try {
+        tokenResponse = await pca.acquireTokenSilent({ ...loginRequest, account });
+      } catch (e) {
+        if (e instanceof msal.InteractionRequiredAuthError) {
+          return pca.acquireTokenRedirect(loginRequest);
+        }
+        throw e;
+      }
+      const res = await fetch(
+        "https://graph.microsoft.com/v1.0/me?$select=displayName,userPrincipalName,jobTitle,department,officeLocation,mail",
+        { headers: { Authorization: `Bearer ${tokenResponse.accessToken}` } }
+      );
+      if (!res.ok) throw new Error(`Graph call failed: ${res.status} ${res.statusText}`);
+      return res.json();
+    }
+
+    // ===== 4. Render =====
+    function rows(obj, table) {
+      table.innerHTML = "";
+      for (const [k, v] of Object.entries(obj)) {
+        const tr = document.createElement("tr");
+        const th = document.createElement("th");
+        const td = document.createElement("td");
+        th.textContent = k;
+        const code = document.createElement("code");
+        code.textContent = Array.isArray(v) ? v.join(", ") : (v ?? "—");
+        td.appendChild(code);
+        tr.append(th, td);
+        table.appendChild(tr);
+      }
+    }
+
+    function friendlyClaims(c) {
+      const t = (s) => (s ? new Date(s * 1000).toLocaleString() : undefined);
+      return {
+        "name": c.name,
+        "preferred_username (UPN)": c.preferred_username,
+        "oid (user object ID)": c.oid,
+        "tid (tenant ID)": c.tid,
+        "aud (this app's client ID)": c.aud,
+        "iss (issuer)": c.iss,
+        "roles (app roles)": c.roles || "none assigned",
+        "iat (issued at)": t(c.iat),
+        "exp (expires)": t(c.exp)
+      };
+    }
+
+    async function showSignedIn(account) {
+      $("welcome").classList.add("hidden");
+      $("signInBtn").classList.add("hidden");
+      $("signOutBtn").classList.remove("hidden");
+      $("app").classList.remove("hidden");
+
+      const claims = account.idTokenClaims || {};
+      $("greeting").textContent = `Hello, ${claims.name || account.username}`;
+      $("tenantId").textContent = claims.tid || account.tenantId;
+      rows(friendlyClaims(claims), $("claimsTable"));
+
+      const isAdmin = Array.isArray(claims.roles) && claims.roles.includes("HR.Admin");
+      $("rolePill").textContent = isAdmin ? "HR.Admin" : "Not assigned";
+      $("rolePill").className = "pill " + (isAdmin ? "ok" : "warn");
+      $("adminPanel").classList.toggle("hidden", !isAdmin);
+
+      try {
+        const me = await getGraphProfile(account);
+        if (me) rows({
+          "Display name": me.displayName,
+          "UPN": me.userPrincipalName,
+          "Mail": me.mail,
+          "Job title": me.jobTitle,
+          "Department": me.department,
+          "Office": me.officeLocation
+        }, $("graphTable"));
+      } catch (e) {
+        showError(e);
+      }
+    }
+
+    function showError(e) {
+      $("error").textContent = "Error: " + (e.errorMessage || e.message || e);
+      $("error").classList.remove("hidden");
+      console.error(e);
+    }
+
+    // ===== 5. Placeholder HR answers =====
+    const answers = {
+      pto: "Submit time-off requests in the HR portal under Time & Attendance at least two weeks ahead. (Sample answer.)",
+      benefits: "Open enrollment runs each November. Watch your email for the exact window. (Sample answer.)",
+      payroll: "Pay stubs are in the HR portal under Pay > Statements. (Sample answer.)"
+    };
+    document.querySelectorAll(".faq button").forEach((b) =>
+      b.addEventListener("click", () => {
+        $("answer").textContent = answers[b.dataset.q];
+        $("answer").classList.remove("muted");
+      })
+    );
+
+    // ===== 6. Start up: finish any redirect, then check for a signed-in account =====
+    $("signInBtn").onclick = $("signInBtn2").onclick = () => signIn().catch(showError);
+    $("signOutBtn").onclick = () => signOut().catch(showError);
+
+    (async () => {
+      if (CLIENT_ID.startsWith("PASTE")) {
+        showError(new Error("Set CLIENT_ID and TENANT_ID at the top of the script first."));
+        return;
+      }
+      try {
+        await pca.initialize();
+        const result = await pca.handleRedirectPromise(); // processes the #code= response after sign-in
+        const account = result?.account || pca.getAllAccounts()[0];
+        if (account) {
+          pca.setActiveAccount(account);
+          await showSignedIn(account);
+        }
+      } catch (e) {
+        showError(e);
+      }
+    })();
+  </script>
+</body>
+</html>
